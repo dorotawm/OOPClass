@@ -12,10 +12,24 @@ public class Plant {
     }
 
     public String toString() {
-        return "";
+        String perennialString;
+        if (this.perennial) {
+            perennialString = "Can grow for multiple years.";
+        } else {
+            perennialString = "Needs to be replaced after a year.";
+        }
+
+        String overwintersString;
+        if (this.overwinters) {
+            overwintersString = "Doesn't need any special care during winter outdoors.";
+        } else {
+            overwintersString = "Needs covering or bringing inside during winter.";
+        }
+
+        return this.name.toString() + "\n" + perennialString + "\n" + overwintersString + "\n" + this.conditions.toString();
     }
 
-    public boolean suitableForAllYearOutdoors() {
+    public boolean suitableForAllYearGarden() {
         return this.overwinters && this.perennial;
     }
 
@@ -24,8 +38,8 @@ public class Plant {
         Conditions sedumConditions = new Conditions("well drained", "sunny", "rarely");
         Plant sedum = new Plant(sedumName, true, true, sedumConditions);
 
-        System.out.println(sedum.suitableForAllYearOutdoors());
-
+        System.out.println(sedum.suitableForAllYearGarden());
+        System.out.println(sedum);
     }
 }
 
@@ -42,7 +56,7 @@ public class Conditions {
     }
 
     public String toString() {
-        return String.format("Plant in %d soil, sun exposure: %d, warer %d", this.soil, this.sunExposure, this.watering);
+        return String.format("Plant in %s soil, sun exposure: %s, water %s", this.soil, this.sunExposure, this.watering);
     }
 
 }
@@ -58,6 +72,6 @@ public class Name {
     }
 
     public String toString() {
-        return String.format("%d (latin: %d)", this.englishName, this.latinName);
+        return String.format("%s (latin: %s)", this.englishName, this.latinName);
     }
 }
