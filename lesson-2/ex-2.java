@@ -1,6 +1,5 @@
 interface Animal {
-    public Animal giveFavouriteToy(String toyName);
-//    public int foodWeight();
+    Animal giveFavouriteToy(String toyName);
 }
 
 public class Dog implements Animal {
@@ -13,7 +12,7 @@ public class Dog implements Animal {
     }
 
     @Override
-    public Animal giveFavouriteToy(String toyName) {
+    public Dog giveFavouriteToy(String toyName) {
         return new Dog(this.name, toyName);
     }
 
@@ -32,7 +31,7 @@ public class Cat implements Animal {
     }
 
     @Override
-    public Animal giveFavouriteToy(String toyName) {
+    public Cat giveFavouriteToy(String toyName) {
         return new Cat(this.name, toyName);
     }
 
